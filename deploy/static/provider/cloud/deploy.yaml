@@ -349,11 +349,6 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - appProtocol: http
-    name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
   - appProtocol: https
     name: https
     port: 443
@@ -457,9 +452,6 @@ spec:
           timeoutSeconds: 1
         name: controller
         ports:
-        - containerPort: 80
-          name: http
-          protocol: TCP
         - containerPort: 443
           name: https
           protocol: TCP
