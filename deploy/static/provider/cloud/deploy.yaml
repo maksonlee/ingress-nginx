@@ -333,6 +333,14 @@ metadata:
   namespace: ingress-nginx
 ---
 apiVersion: v1
+data:
+  29418 : "default/gerrit-gerrit-service:29418"
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+---
+apiVersion: v1
 kind: Service
 metadata:
   labels:
@@ -354,6 +362,11 @@ spec:
     port: 443
     protocol: TCP
     targetPort: https
+  - appProtocol: ssh
+    name: ssh
+    port: 29418
+    protocol: TCP
+    targetPort: 29418
   selector:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
